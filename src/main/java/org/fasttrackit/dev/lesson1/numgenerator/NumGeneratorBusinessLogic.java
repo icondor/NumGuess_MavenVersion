@@ -86,6 +86,18 @@ public class NumGeneratorBusinessLogic {
 
             System.out.println("diff este:"+diff);
 
+            SendMail s = new SendMail("cucu bau",diff, generatedNumber);
+            SendMail s1 = new SendMail("cucu bau",diff, generatedNumber);
+
+
+            Thread t = new Thread(s);
+            t.start();
+
+
+            Thread t1 = new Thread(s1);
+            t1.start();
+
+
         } else if (guessNumber < generatedNumber) {
             hint = "higher";
             successfulGuess = false;
