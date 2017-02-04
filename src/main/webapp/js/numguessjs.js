@@ -42,6 +42,9 @@
                  var keyHint = jSonMessage.keyHint;
                  var keyNrGuesses = jSonMessage.keyNrGuesses;
 
+                 var diff = jSonMessage.keyDiff;
+
+
                  if(keySuccess=="false") {
                      if (keyHint == "higher")
                          document.getElementById("serverResponse").innerHTML = "WRONG, Try a Higher one!";
@@ -51,7 +54,10 @@
                  else
                  if(keySuccess=="true")
                  {
+                     alert(diff);
+
                      document.getElementById("serverResponse").innerHTML = "Congrats, you guessed the number " + document.getElementById("number").value + " after " + keyNrGuesses + " guesses.";
+                     document.getElementById("timeSinceStart").innerHTML = "Timpul este:"+diff;
                  }
              }
          }

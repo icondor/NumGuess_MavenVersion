@@ -26,6 +26,13 @@ public class NumGeneratorBusinessLogic {
     private int generatedNumber;
     private String hint;
 
+    private long startT;
+    private double diff;
+
+    public double getDiff() {
+        return diff;
+    }
+
     public NumGeneratorBusinessLogic(){
         resetNumberGenerator();
     }
@@ -50,18 +57,35 @@ public class NumGeneratorBusinessLogic {
         isFirstTime = true;
         numberOfGuesses = 0;
         hint = "";
+        startT=0;
     }
 
     public boolean determineGuess(int guessNumber){
         if (isFirstTime) {
+
+
             generatedNumber = NumGenerator.generate(MAX_NUMBER);
             System.out.println("gennr:"+generatedNumber);
             isFirstTime = false;
+
+             startT = System.currentTimeMillis();
+            System.out.println("am pornit la:"+startT);
+
         }
         numberOfGuesses++;
         if (guessNumber == generatedNumber) {
+
+
             hint="";
             successfulGuess = true;
+
+            long stopT = System.currentTimeMillis();
+            System.out.println("am ghicit la:"+stopT);
+
+             diff = (stopT-startT)/1000.0;
+
+            System.out.println("diff este:"+diff);
+
         } else if (guessNumber < generatedNumber) {
             hint = "higher";
             successfulGuess = false;
