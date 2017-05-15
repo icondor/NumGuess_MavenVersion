@@ -41,6 +41,7 @@ public class NumGenServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) {
 
 
+        LOGGER.log(Level.INFO,"enter service()");
         HttpSession session = request.getSession(true);
 
         String requestRestartGame = request.getParameter(REQUEST_PARAM_RESTARTGAME);
@@ -75,10 +76,14 @@ public class NumGenServlet extends HttpServlet {
             returnJsonResponse(response, jsonResponse);
 
         }
+
+        LOGGER.log(Level.INFO,"end of  service()");
     }
 
     /* extracted for testability reasons */
     public static String buildJSonObject(NumGeneratorBusinessLogic nbl, String requestGuessNumber) {
+        LOGGER.log(Level.INFO,"enter build json");
+
         String jsonResponse;
         int iGuessNumber = 0;
         boolean isANumber = true;
@@ -100,6 +105,7 @@ public class NumGenServlet extends HttpServlet {
         } else {
             jsonResponse = "{\"keyError\":\"WRONGNUMBERFORMAT\"}";
         }
+        LOGGER.log(Level.INFO,"out build json");
         return jsonResponse;
     }
 

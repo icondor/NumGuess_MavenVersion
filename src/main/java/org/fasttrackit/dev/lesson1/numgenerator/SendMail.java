@@ -1,10 +1,13 @@
 package org.fasttrackit.dev.lesson1.numgenerator;
 
 
-        import javax.mail.*;
+        import javax.mail.Message;
+        import javax.mail.Session;
+        import javax.mail.Transport;
         import javax.mail.internet.InternetAddress;
         import javax.mail.internet.MimeMessage;
-        import java.util.Properties;
+        import javax.naming.Context;
+        import javax.naming.InitialContext;
         import java.util.logging.Level;
         import java.util.logging.Logger;
 
@@ -38,30 +41,40 @@ public class SendMail implements Runnable{
     public void run(){
 
         LOGGER.log(Level.FINE,"calling gmail...start...");
-        final String username = System.getenv("GM_U");
-        final String password = System.getenv("GM_P");
-        LOGGER.log(Level.FINE,"user/pass="+username+"/"+password);
+//        final String username = System.getenv("GM_U");
+//        final String password = System.getenv("GM_P");
+//        LOGGER.log(Level.FINE,"user/pass="+username+"/"+password);
+//
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.port", "587");
+//
+//        Session session = Session.getInstance(props,
+//                new javax.mail.Authenticator() {
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
+//                });
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
 
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+
 
         try {
+
+            System.out.println("getting the context...");
+            Context initial = new InitialContext();
+            Session session =
+                    (Session) initial.lookup("java:comp/env/mail/MailSession");
+
+            System.out.println("context setup ok");
 
             Message message = new MimeMessage(session);
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toEmail));
             message.setSubject("Num-guess");
-            message.setText("Congratulation! You won! \nYou guessed the number: " + guessedNumber + " after " + numberOfTries + " tries.\nYour time:" + time);
+            message.setText("Congratulation! You won this game! \nYou just guessed the number: " + guessedNumber + " after " + numberOfTries + " tries.\nYour time:" + time);
 
             Transport.send(message);
 

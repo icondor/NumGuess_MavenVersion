@@ -107,8 +107,10 @@ public class NumGeneratorBusinessLogic {
 
             // send mail all the time
             LOGGER.log(Level.FINE,"start - sending email business logic");
+            System.out.println("send email");
             SendMail sm = new SendMail(numberOfGuesses, guessNumber, counterGuessStop, "ionel_condor@yahoo.com");
             sm.sendEmail();
+            System.out.println("email send ok");
             LOGGER.log(Level.FINE,"stop - sending email business logic");
 
 
