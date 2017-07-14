@@ -21,12 +21,11 @@
 
 
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>8.0.14</version>
       <scope>provided</scope>
     </dependency>
-
     <dependency>
 
       <groupId>junit</groupId>
@@ -35,9 +34,17 @@
       <scope>test</scope>
     </dependency>
 
+
+    <!-- notice this new dependency, scope is the default one compile   -->
+
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4</version>
+    </dependency>
+
+
   </dependencies>
-
-
   <build>
     <finalName>NumGuess</finalName>
 
@@ -53,9 +60,5 @@
       </plugin>
     </plugins>
 
-
   </build>
-
-
-
 </project>
