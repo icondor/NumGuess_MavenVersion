@@ -35,7 +35,7 @@
     </dependency>
 
 
-    <!-- notice this new dependecy -->
+    <!-- notice this new dependency  -->
 
     <dependency>
       <groupId>javax.mail</groupId>
