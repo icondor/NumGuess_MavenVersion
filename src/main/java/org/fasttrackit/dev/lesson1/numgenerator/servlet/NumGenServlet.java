@@ -2,6 +2,7 @@ package org.fasttrackit.dev.lesson1.numgenerator.servlet;
 
 import org.fasttrackit.dev.lesson1.numgenerator.NumGeneratorBusinessLogic;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ FastTrackIT 2015
 
 */
 
+@WebServlet("/NumGenServlet")
 public class NumGenServlet extends HttpServlet {
 
     private static final String REQUEST_PARAM_RESTARTGAME = "requestRestartGame";
@@ -32,6 +34,7 @@ public class NumGenServlet extends HttpServlet {
     private static final String SESSION_KEY_RESTART = "_sessionKey_restart";
     private static final String SESSION_KEY_NUMBER_GENERATOR_BUSINESS_LOGIC = "_sessionKey_NumberGeneratorBusinessLogic";
     private static final String VALUE_INIT = "1";
+
 
 
 

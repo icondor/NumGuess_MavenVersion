@@ -4,18 +4,18 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <servlet>
-        <servlet-name>NumGenServlet</servlet-name>
-        <servlet-class>org.fasttrackit.dev.lesson1.numgenerator.servlet.NumGenServlet</servlet-class>
+<!--    <servlet>-->
+<!--        <servlet-name>NumGenServlet</servlet-name>-->
+<!--        <servlet-class>org.fasttrackit.dev.lesson1.numgenerator.servlet.NumGenServlet</servlet-class>-->
 
-    </servlet>
+<!--    </servlet>-->
 
 
 
-    <servlet-mapping>
-        <servlet-name>NumGenServlet</servlet-name>
-        <url-pattern>/NumGenServlet</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>NumGenServlet</servlet-name>-->
+<!--        <url-pattern>/NumGenServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 </web-app>
